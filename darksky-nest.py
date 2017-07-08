@@ -11,6 +11,8 @@ doc_type = "darkskynest"
 darkskyindex = "darksky-*"
 nestindex = "nest-*"
 elastichost='localhost:9200'
+nestjsonfile = "./getnest.json"
+darkskyjsonfile = "./getdarksky.json"
 
 dualdata = {}
 
@@ -22,10 +24,10 @@ month = now.strftime("%m")
 year = now.strftime("%Y")
 index = indexname + "-" + year + "-" + month
 
-with open('./getnest.json') as json_data:
+with open(nestjsonfile) as json_data:
     nestjson = json.load(json_data)
 
-with open('./getdarksky.json') as json_data:
+with open(darkskyjsonfile) as json_data:
     darkskyjson = json.load(json_data)
 
 nestres = es.search(index=nestindex, body=nestjson)
