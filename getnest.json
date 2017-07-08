@@ -4,7 +4,7 @@
       "must": [
         {
           "query_string": {
-            "query": "timestamp: [now-5m TO now]",
+            "query": "timestamp: [now-10m TO now]",
             "analyze_wildcard": true
           }
         }
