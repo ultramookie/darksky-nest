@@ -1,0 +1,31 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "@timestamp: [now-5m TO now]",
+            "analyze_wildcard": true
+          }
+        }
+      ],
+      "must_not": []
+    }
+  },
+  "size": 0,
+  "_source": {
+    "excludes": []
+  },
+  "aggs": {
+    "darkskytemp": {
+      "avg": {
+        "field": "currently.temperature"
+      }
+    },
+    "darkskyhumidity": {
+      "avg": {
+        "field": "currently.humidity"
+      }
+    }
+  }
+}
